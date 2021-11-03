@@ -1,24 +1,29 @@
 using System.Reflection;
 using Amazon.DynamoDBv2;
-using CatFactsCore.Data.Dynamo;
+using CatFactsCore.Data.Repositories;
 using CatFactsCore.Domain.Interfaces;
 using CatFactsCore.Domain.Services;
 using MediatR;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CatFactsCore.Data
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddDynamoStorage(
+        public static IServiceCollection AddCosmosRepositories(
             this IServiceCollection services,
-            string tableName)
-
+            string endpointUrl,
+            string authorizationKey,
+            string databaseId,
+            string containerId)
         {
-            services.AddTransient<AmazonDynamoDBClient>();
+            // Cosmos
+            services.AddSingleton(s => new CosmosClient(endpointUrl, authorizationKey));
 
-            services.AddTransient<ISubscriberStore, SubscriberStore>(s =>
-                new SubscriberStore(tableName, s.GetService<AmazonDynamoDBClient>()));
+            // Repositories
+            services.AddTransient(s =>
+                new SubscriberRepository(databaseId, containerId, s.GetService<CosmosClient>()));
 
             return services;
         }
