@@ -15,7 +15,7 @@ namespace CatFactsCore.Domain.Commands.ProcessSms
 {
     public class ProcessSmsHandler : IRequestHandler<ProcessSmsCommand>
     {
-        private readonly ISubscriberStore _subscriberStore;
+        private readonly ISubscriberRepository _subscriberRepository;
         private readonly INotificationService _notificationService;
 
         private static readonly List<Tuple<SmsOperation, string[]>> Operations =
@@ -35,9 +35,9 @@ namespace CatFactsCore.Domain.Commands.ProcessSms
                     new[] {"shit", "fuck", "damn", "cuss", "swear", "hec", "heck"}),
             };
 
-        public ProcessSmsHandler(ISubscriberStore subscriberStore, INotificationService notificationService)
+        public ProcessSmsHandler(ISubscriberRepository subscriberRepository, INotificationService notificationService)
         {
-            _subscriberStore = subscriberStore;
+            _subscriberRepository = subscriberRepository;
             _notificationService = notificationService;
         }
 
@@ -87,7 +87,7 @@ namespace CatFactsCore.Domain.Commands.ProcessSms
 
         private async Task Subscribe(string contact)
         {
-            await _subscriberStore.Write(new Subscriber
+            await _subscriberRepository.Write(new Subscriber
             {
                 Contact = contact
             });
@@ -101,7 +101,7 @@ namespace CatFactsCore.Domain.Commands.ProcessSms
 
         private async Task Unsubscribe(string contact)
         {
-            await _subscriberStore.Delete(contact);
+            await _subscriberRepository.Delete(contact);
             await _notificationService.SendSms(
                 new Sms
                 {
