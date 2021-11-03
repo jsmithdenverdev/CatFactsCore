@@ -7,8 +7,14 @@
         <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.0.1" OutputItemType="Analyzer"/>
-        <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.0.0"/>
+        <PackageReference Include="HttpMultipartParser" Version="5.0.1" />
+        <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.12" />
+        <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.0.1" />
+        <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.0.1" OutputItemType="Analyzer" />
+        <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+        <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
     </ItemGroup>
     <ItemGroup>
         <None Update="host.json">
@@ -18,5 +24,9 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <CopyToPublishDirectory>Never</CopyToPublishDirectory>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\CatFactsCore.Data\CatFactsCore.Data.csproj" />
+      <ProjectReference Include="..\CatFactsCore.Domain\CatFactsCore.Domain.csproj" />
     </ItemGroup>
 </Project>
