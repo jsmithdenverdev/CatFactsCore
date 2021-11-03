@@ -5,7 +5,7 @@ using CatFactsCore.Domain.Entities;
 
 namespace CatFactsCore.Domain.Interfaces
 {
-    public interface ISubscriberStore
+    public interface ISubscriberRepository
     {
         public Task Write(Subscriber subscriber);
         public Task Delete(string contact);
