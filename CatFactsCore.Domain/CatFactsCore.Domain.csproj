@@ -8,7 +8,13 @@
       <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Twilio" Version="5.67.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Integrations\CatFactNinja\Models" />
+      <Folder Include="Integrations\CatFactNinja\Services" />
     </ItemGroup>
 
 </Project>
