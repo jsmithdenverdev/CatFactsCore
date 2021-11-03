@@ -1,10 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using CatFactsCore.Domain.Commands.SendFact;
-using CatFactsCore.Domain.Interfaces;
 using MediatR;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
 
 namespace CatFactsCore.Functions
 {

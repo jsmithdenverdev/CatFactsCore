@@ -1,4 +1,3 @@
-using System;
 using CatFactsCore.Domain.Enums;
 
 namespace CatFactsCore.Domain.Entities

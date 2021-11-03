@@ -1,11 +1,7 @@
 using System.Threading.Tasks;
-using CatFactsCore.Domain.Exceptions;
 using CatFactsCore.Domain.Integrations.Twilio.Interfaces;
 using CatFactsCore.Domain.Interfaces;
 using CatFactsCore.Domain.Models;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Types;
 
 namespace CatFactsCore.Domain.Services
 {

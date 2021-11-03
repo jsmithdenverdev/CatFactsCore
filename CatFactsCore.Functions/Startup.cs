@@ -6,7 +6,6 @@ using CatFactsCore.Domain.Integrations.Twilio;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(CatFactsCore.Functions.Startup))]
 
